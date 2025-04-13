@@ -144,17 +144,37 @@ def main():
         print(f"Created {len(created_files)} files for resource: {args.name}")
         print("Resource scaffold created successfully")
     elif args.command == 'domain':
-        # TODO: Implement domain-driven design scaffolding
-        print(f"Domain-driven design scaffolding not yet implemented")
+        from .scaffolding_extensions import generate_domain_driven_design_scaffold
+        created_files = generate_domain_driven_design_scaffold(
+            args.name, 
+            args.entities,
+            args.output_dir
+        )
+        total = sum(len(files) for files in created_files.values())
+        print(f"Created {total} files for domain: {args.name}")
+        print("Domain-driven design scaffold created successfully")
     elif args.command == 'microservice':
-        # TODO: Implement microservice scaffolding
-        print(f"Microservice scaffolding not yet implemented")
+        from .scaffolding_extensions import generate_microservice_scaffold
+        created_files = generate_microservice_scaffold(
+            args.name,
+            args.type,
+            args.port,
+            args.output_dir
+        )
+        total = sum(len(files) for files in created_files.values())
+        print(f"Created {total} files for microservice: {args.name}")
+        print("Microservice scaffold created successfully")
     elif args.command == 'migration':
         # TODO: Implement database migration
         print(f"Database migration not yet implemented")
     elif args.command == 'graphql':
-        # TODO: Implement GraphQL schema generation
-        print(f"GraphQL schema generation not yet implemented")
+        from .scaffolding_extensions import generate_graphql_schemas
+        created_files = generate_graphql_schemas(
+            args.models,
+            args.output
+        )
+        print(f"Created {len(created_files)} GraphQL schema files")
+        print("GraphQL schema generation completed successfully")
     else:
         parser.print_help()
 
