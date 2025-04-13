@@ -1,0 +1,39 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "fortitude"
+version = "0.1.0"
+description = "A web framework with server-side components defined as Pydantic models"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+repository = "https://github.com/your-username/fortitude"
+keywords = ["web", "framework", "pydantic", "nextjs", "fastapi"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+packages = [
+    { include = "fortitude", from = "." }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+fastapi = ">=0.103.1"
+uvicorn = ">=0.23.2"
+pydantic = ">=2.4.2"
+asyncio = ">=3.4.3"
+aiohttp = ">=3.8.5"
+
+[tool.poetry.scripts]
+fort = "fortitude.cli.fort:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
